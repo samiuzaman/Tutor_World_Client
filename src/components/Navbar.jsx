@@ -25,7 +25,7 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar className="w-11/12 lg:w-5/6 mx-auto border-none">
+    <Navbar className="w-11/12 mx-auto border-none">
       <NavbarContainer className="mx-auto p-2 md:p-0 ">
         <NavbarBrand>
           {/* <img src={KeepLogo} alt="keep" /> */}
@@ -39,10 +39,10 @@ const NavbarComponent = () => {
         </NavbarBrand>
         <NavbarList className="space-x-5 ">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/findTutors">Find tutors</NavLink>
-          <NavLink to="/addTutorials">Add Tutorials</NavLink>
+          <NavLink to="/findTutors">Find Tutors</NavLink>
+          <NavLink to="/addTutorials">Add Tutorial</NavLink>
           <NavLink to="/myTutorials">My Tutorials</NavLink>
-          <NavLink to="/myBookedTutors">My booked tutors</NavLink>
+          <NavLink to="/myBookedTutors">My Booked Tutors</NavLink>
         </NavbarList>
         <NavbarList>
           <div>
@@ -63,7 +63,7 @@ const NavbarComponent = () => {
                     </TooltipAction>
                     <TooltipContent
                       side="top"
-                      className="bg-metal-300 space-y-4 text-center"
+                      className="bg-primary-500 space-y-4 text-center"
                     >
                       <h2>{user && user.displayName}</h2>
                     </TooltipContent>
@@ -121,10 +121,10 @@ const NavbarComponent = () => {
           </div>
 
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/findTutors">Find tutors</NavLink>
-          <NavLink to="/addTutorials">Add Tutorials</NavLink>
+          <NavLink to="/findTutors">Find Tutors</NavLink>
+          <NavLink to="/addTutorials">Add Tutorial</NavLink>
           <NavLink to="/myTutorials">My Tutorials</NavLink>
-          <NavLink to="/myBookedTutors">My booked tutors</NavLink>
+          <NavLink to="/myBookedTutors">My Booked Tutors</NavLink>
           <div>
             {user && user.email ? (
               <Button onClick={handleSignOut} className="text-[#ffffff]">

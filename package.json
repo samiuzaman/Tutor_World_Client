@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "axios": "^1.7.9",
     "firebase": "^11.0.2",
     "keep-react": "^1.6.1",
     "localforage": "^1.10.0",
@@ -25,6 +26,7 @@
     "react-router-dom": "^6.28.0",
     "react-toastify": "^10.0.6",
     "sort-by": "^1.2.0",
+    "sweetalert2": "^11.15.3",
     "swiper": "^11.1.14",
     "tailwindcss-animate": "^1.0.7"
   },

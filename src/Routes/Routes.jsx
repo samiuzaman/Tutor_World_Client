@@ -5,6 +5,12 @@ import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import Forgot from "../Pages/Forgot";
+import TutorDetails from "../Pages/TutorDetails";
+import PrivetRoute from "../PrivetRoute/PrivetRoute";
+import FindTutors from "../Pages/FindTutors";
+import AddTutorials from "../Pages/AddTutorials";
+import MyTutorials from "../Pages/MyTutorials";
+import MyBookedTutor from "../Pages/MyBookedTutor";
 
 const routes = createBrowserRouter([
   {
@@ -18,6 +24,41 @@ const routes = createBrowserRouter([
       },
       {
         path: "/findTutors",
+        element: <FindTutors></FindTutors>,
+      },
+      {
+        path: "/tutorDetails/:id",
+        element: (
+          <PrivetRoute>
+            <TutorDetails></TutorDetails>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/addTutorials",
+        element: (
+          <PrivetRoute>
+            <AddTutorials></AddTutorials>
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/myTutorials",
+        element: (
+          <PrivetRoute>
+            {" "}
+            <MyTutorials></MyTutorials>{" "}
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/myBookedTutors",
+        element: (
+          <PrivetRoute>
+            {" "}
+            <MyBookedTutor></MyBookedTutor>{" "}
+          </PrivetRoute>
+        ),
       },
 
       {
