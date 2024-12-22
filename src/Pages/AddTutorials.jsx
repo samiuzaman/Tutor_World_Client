@@ -78,7 +78,7 @@ const AddTutorials = () => {
         <div className="md:flex gap-4 pt-4 ">
           <fieldset className="space-y-1">
             <Label htmlFor="Category">Language</Label>
-            <Select name="jobType">
+            <Select name="language">
               <SelectAction className="w-full md:w-[16rem]">
                 <SelectValue placeholder="Language" />
               </SelectAction>
@@ -109,7 +109,7 @@ const AddTutorials = () => {
             <Label htmlFor="customizatin">Review</Label>
             <div>
               <Input
-              readOnly
+                readOnly
                 type="text"
                 name="review"
                 defaultValue={0}
