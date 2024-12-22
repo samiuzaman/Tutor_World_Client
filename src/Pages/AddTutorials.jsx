@@ -125,6 +125,7 @@ const AddTutorials = () => {
             <div>
               <Textarea
                 name="description"
+                className="border-black"
                 placeholder="Write your description"
                 rows={2}
               />

@@ -11,6 +11,7 @@ import FindTutors from "../Pages/FindTutors";
 import AddTutorials from "../Pages/AddTutorials";
 import MyTutorials from "../Pages/MyTutorials";
 import MyBookedTutor from "../Pages/MyBookedTutor";
+import Category from "../components/HomeLayout/Category";
 
 const routes = createBrowserRouter([
   {
@@ -21,10 +22,17 @@ const routes = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        children: [
+          {
+            path: "/",
+            element: <Category></Category>,
+          },
+        ],
       },
       {
         path: "/findTutors",
         element: <FindTutors></FindTutors>,
+        loader: () => fetch("http://localhost:5000/alltutorial"),
       },
       {
         path: "/tutorDetails/:id",

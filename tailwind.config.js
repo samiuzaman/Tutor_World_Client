@@ -5,8 +5,7 @@ const config = {
   theme: {
     fontFamily: {
       Poppins: ["Poppins", "sans-serif"],
-      PlayfairDisplay: ["Playfair Display", "serif"],
-      Lora: ["Lora", "serif"],
+      Fira: ["Fira", "sans-serif"],
     },
     colors: {
       first: "#FF4438",

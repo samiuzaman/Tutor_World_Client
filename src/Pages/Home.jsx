@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet-async";
-
 import { Outlet } from "react-router-dom";
 
 const Home = () => {

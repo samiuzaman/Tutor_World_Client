@@ -124,6 +124,7 @@ const ModalComponents = ({
             <Label htmlFor="customizatin">Description</Label>
             <div>
               <Textarea
+              className="border-black"
                 name="description"
                 placeholder="Write your description"
                 defaultValue={itme_description}
