@@ -1,13 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import useAuth from "../Hook/useAuth";
-import { DotsThreeOutlineVertical } from "phosphor-react";
 import {
   Avatar,
-  Dropdown,
-  DropdownAction,
-  DropdownContent,
-  DropdownItem,
+  Button,
+  Modal,
+  ModalAction,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
   Table,
   TableBody,
   TableCell,
@@ -15,6 +16,10 @@ import {
   TableHeader,
   TableRow,
 } from "keep-react";
+import Swal from "sweetalert2";
+import { MdDeleteForever } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
+import ModalComponents from "../components/Modal";
 
 const MyTutorials = () => {
   const { user } = useAuth();
@@ -25,6 +30,31 @@ const MyTutorials = () => {
       .then((data) => setMyTutorials(data.data))
       .catch((error) => console.log(error));
   }, []);
+
+  const handleDeleteTutorial = (id) => {
+    console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((data) => {
+      axios.delete(`http://localhost:5000/alltutorial/${id}`).then((data) => {
+        console.log(data.data);
+        if (data.data.deletedCount > 0) {
+          Swal.fire({
+            title: "Deleted!",
+            text: " Tutorial has been deleted.",
+            icon: "success",
+          });
+        }
+      });
+    });
+  };
 
   return (
     <div className="bg-[#F5F6F9]">
@@ -46,7 +76,7 @@ const MyTutorials = () => {
               <TableCell>{index + 1}</TableCell>
               <TableCell>
                 <Avatar>
-                  <img src={item.company_logo} />
+                  <img src={item.image} />
                 </Avatar>
               </TableCell>
 
@@ -55,22 +85,37 @@ const MyTutorials = () => {
               <TableCell>{item.review}</TableCell>
               <TableCell>{item.description}</TableCell>
 
-              <TableCell>
-                <Dropdown>
-                  <DropdownAction asChild>
-                    <button>
-                      <DotsThreeOutlineVertical className="size-4 fill-metal-900 dark:fill-white" />
-                    </button>
-                  </DropdownAction>
-                  <DropdownContent
-                    align="end"
-                    className="w-[200px] border border-metal-100 p-3 dark:border-metal-800"
+              <Modal className="w-[400px]">
+                <div className="flex">
+                  <ModalAction asChild>
+                    <Button variant="link" color="success">
+                      <CiEdit className="text-2xl mt-4" />
+                    </Button>
+                  </ModalAction>
+                  <Button
+                    variant="link"
+                    color="error"
+                    className="text-2xl  mt-2"
+                    onClick={() => handleDeleteTutorial(item._id)}
                   >
-                    <DropdownItem>Edit</DropdownItem>
-                    <DropdownItem>Delete</DropdownItem>
-                  </DropdownContent>
-                </Dropdown>
-              </TableCell>
+                    {" "}
+                    <MdDeleteForever />{" "}
+                  </Button>
+                </div>
+                <ModalContent className="max-w-[20rem] lg:max-w-[26rem]">
+                  <ModalHeader className="mb-6 flex flex-col items-center justify-center space-y-3">
+                    <h4>Modal</h4>
+                    <ModalComponents
+                      itme_id={item._id}
+                      itme_language={item.language}
+                      itme_price={item.price}
+                      itme_description={item.description}
+                      itme_item={item.image}
+                      key={item?._id}
+                    ></ModalComponents>
+                  </ModalHeader>
+                </ModalContent>
+              </Modal>
             </TableRow>
           ))}
         </TableBody>

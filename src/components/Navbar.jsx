@@ -71,7 +71,7 @@ const NavbarComponent = () => {
                 </TooltipProvider>
                 <Button
                   onClick={handleSignOut}
-                  className="text-lg hover:bg-primary-500 hover:text-white"
+                  className="text-base hover:bg-primary-500 hover:text-white"
                   variant="outline"
                 >
                   <IoMdExit className="mr-1 text-xl" /> Log Out
