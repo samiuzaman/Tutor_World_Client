@@ -18,40 +18,38 @@ const FindTutorsCard = ({ tutorial }) => {
   console.log(tutorial);
   return (
     <div>
-      <div className="border border-metal-300 bg-white shadow-lg rounded-xl pt-6 pb-3 ">
-        <CardHeader className="flex items-center gap-4 px-4">
-          <Avatar>
-            <AvatarImage src={image} />
-          </Avatar>
-          <div>
-            <h4 className="text-xl font-medium">{name}</h4>
+      <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-start p-4 gap-6">
+        <div className="w-36 h-28">
+          <img
+            className="w-full h-full rounded-lg border border-error-500"
+            src={image}
+          />
+        </div>
+        <div className="w-full space-y-2">
+          <CardTitle className="text-xl font-medium">{name}</CardTitle>
+          <CardDescription>{description}</CardDescription>
+
+          <div className="flex  items-center justify-end gap-5 ">
             <p className="text-metal-500 font-medium text-base flex gap-2 items-center">
-              {" "}
               <FaStar className="text-warning-400 text-lg" /> {review}
             </p>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-3">
-          <CardTitle>{}</CardTitle>
-          <CardDescription>{description}</CardDescription>
-        </CardContent>
-        <CardFooter className="flex justify-between items-center px-6 pb-3">
-          <Button
-            variant="link"
-            shape="circle"
-            className="text-2xl hover:bg-metal-300"
-          >
-            <FaRegHeart className="text-metal-700 " />
-          </Button>
-          <Link to={`/findTutors/${_id}`}>
             <Button
-              color="error"
-              className="hover:bg-primary-700 hover:text-white text-white"
+              variant="link"
+              shape="circle"
+              className="text-2xl hover:bg-metal-300"
             >
-              Details
+              <FaRegHeart className="text-metal-700 " />
             </Button>
-          </Link>
-        </CardFooter>
+            <Link to={`/tutorDetails/${_id}`}>
+              <Button
+                color="error"
+                className="hover:bg-primary-700 hover:text-white text-white"
+              >
+                Details
+              </Button>
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );

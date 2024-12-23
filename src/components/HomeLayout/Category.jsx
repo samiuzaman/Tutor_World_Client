@@ -7,11 +7,15 @@ const Category = () => {
   useEffect(() => {
     axios.get("http://localhost:5000/category").then((data) => {
       setDatas(data.data);
-      const filter = datas.language.includes(categorys.language);
-      setCategorys(filter);
     });
   }, [setCategorys]);
-  console.log(datas);
+
+  // useEffect(() => {
+  // const filter = datas.find((data) => data.language !== categorys);
+  // console.log(filter.language);
+  //   setCategorys([...categorys, allCategory.language]);
+  // }, [setCategorys]);
+  console.log("Datas", datas);
   console.log("Category", categorys);
   return (
     <div>
