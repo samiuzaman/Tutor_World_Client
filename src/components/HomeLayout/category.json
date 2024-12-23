@@ -1,0 +1,38 @@
+[
+  {
+    "category": "Arabic",
+    "icon": "https://i.ibb.co.com/2kjJPHR/bank.png"
+  },
+  {
+    "category": "Bengali",
+    "icon": "https://i.ibb.co.com/5BsNZGQ/building.png"
+  },
+  {
+    "category": "English",
+    "icon": "https://i.ibb.co.com/YPZ38Lf/church.png"
+  },
+  {
+    "category": "German",
+    "icon": "https://i.ibb.co.com/dD1xctp/clock-tower.png"
+  },
+  {
+    "category": "Hindi",
+    "icon": "https://i.ibb.co.com/BTCjKsF/finance.png"
+  },
+  {
+    "category": "Italian",
+    "icon": "https://i.ibb.co.com/KF2wX2j/golden-gate-bridge.png"
+  },
+  {
+    "category": "Japanese",
+    "icon": "https://i.ibb.co.com/6YZz6JP/hospital.png"
+  },
+  {
+    "category": "Korean",
+    "icon": "https://i.ibb.co.com/QbY9sRB/school.png"
+  },
+  {
+    "category": "Turkish",
+    "icon": "https://i.ibb.co.com/n094wZx/university.png"
+  }
+]

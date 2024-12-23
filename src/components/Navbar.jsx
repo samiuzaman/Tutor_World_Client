@@ -27,15 +27,13 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar
-      className={`px-[2%] lg:px-[7%] shadow-lg`}
-    >
+    <Navbar className={`px-[2%] lg:px-[7%] shadow-lg`}>
       <NavbarContainer className="mx-auto p-2 md:p-0 ">
         <NavbarBrand>
           {/* <img src={KeepLogo} alt="keep" /> */}
           <Link
             to="/"
-            className="flex justify-center items-center text-2xl text-[#ED4C67] font-semibold"
+            className="flex justify-center items-center text-2xl text-error-400 font-semibold"
           >
             <img className="w-8 h-7" src={Logo} />
             Tutor World
