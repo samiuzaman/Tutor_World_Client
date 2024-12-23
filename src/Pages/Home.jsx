@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Outlet } from "react-router-dom";
+import Stats from "../components/HomeLayout/Stats";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
         <link rel="canonical" href="/" />
       </Helmet>
       <div className="my-12">
+        <Stats></Stats>
         <Outlet></Outlet>
       </div>
     </div>
