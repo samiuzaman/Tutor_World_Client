@@ -22,7 +22,7 @@ const FindTutorsCard = ({ tutorial }) => {
 
           <div className="flex  items-center justify-end gap-5 ">
             <p className="text-metal-500 font-medium text-base flex gap-1 items-center">
-              <FaStar className="text-warning-400 text-lg" />5: {review}
+              5 <FaStar className="text-warning-400 text-lg" />: {review}
             </p>
             <Button
               variant="link"

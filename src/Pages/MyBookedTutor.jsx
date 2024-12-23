@@ -13,6 +13,13 @@ const MyBookedTutor = () => {
       .then((data) => setMyBookedData(data.data));
   }, []);
 
+  const handleUpdateReview = (id) => {
+    console.log(id);
+    axios
+      .put(`http://localhost:5000/alltutorial/${id}`)
+      .then((data) => console.log(data.data));
+  };
+
   console.log(myBookedData);
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto my-12">
@@ -23,7 +30,7 @@ const MyBookedTutor = () => {
       <Divider color="primary" className="my-4" />
       <div>
         {myBookedData?.map((bookData) => (
-          <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-start p-4 gap-6 mb-5">
+          <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-center p-4 gap-6 mb-5">
             <div className="w-40 h-28">
               <img
                 className="w-full h-full rounded-lg border border-error-500"
@@ -47,6 +54,7 @@ const MyBookedTutor = () => {
                   5 <FaStar className="text-warning-400 " />:{bookData.review}
                 </p>
                 <Button
+                  onClick={() => handleUpdateReview(bookData.tutor_id)}
                   color="error"
                   className="hover:bg-error-600 hover:text-white text-white"
                 >

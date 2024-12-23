@@ -69,8 +69,8 @@ const TutorDetails = () => {
         <div className="">
           <div className="flex justify-evenly gap-6">
             <p className="text-metal-500 font-medium flex flex-col items-center">
-              <span className="flex items-center gap-2 text-2xl">
-                <FaStar className="text-warning-400 text-xl" /> 5
+              <span className="flex items-center gap-1 text-2xl">
+                5 <FaStar className="text-warning-400 " />
               </span>
               <span className="text-sm">{review} review</span>
             </p>
