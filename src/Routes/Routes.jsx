@@ -65,7 +65,7 @@ const routes = createBrowserRouter([
         path: "/myBookedTutors",
         element: (
           <PrivetRoute>
-           
+            {" "}
             <MyBookedTutor></MyBookedTutor>{" "}
           </PrivetRoute>
         ),
