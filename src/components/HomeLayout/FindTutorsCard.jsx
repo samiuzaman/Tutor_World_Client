@@ -1,13 +1,4 @@
-import {
-  Avatar,
-  AvatarImage,
-  Button,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "keep-react";
+import { Button, CardDescription, CardTitle } from "keep-react";
 import { FaStar, FaRegHeart } from "react-icons/fa";
 
 import { Link } from "react-router-dom";
@@ -43,7 +34,7 @@ const FindTutorsCard = ({ tutorial }) => {
             <Link to={`/tutorDetails/${_id}`}>
               <Button
                 color="error"
-                className="hover:bg-primary-700 hover:text-white text-white"
+                className="hover:bg-error-600 hover:text-white text-white"
               >
                 Details
               </Button>

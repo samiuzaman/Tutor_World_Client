@@ -41,6 +41,8 @@ const routes = createBrowserRouter([
             <TutorDetails></TutorDetails>
           </PrivetRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/alltutorial/${params.id}`),
       },
       {
         path: "/addTutorials",
@@ -63,7 +65,7 @@ const routes = createBrowserRouter([
         path: "/myBookedTutors",
         element: (
           <PrivetRoute>
-            {" "}
+           
             <MyBookedTutor></MyBookedTutor>{" "}
           </PrivetRoute>
         ),

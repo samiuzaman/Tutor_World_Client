@@ -13,6 +13,7 @@ import {
 } from "keep-react";
 import useAuth from "../Hook/useAuth";
 import axios from "axios";
+import Swal from "sweetalert2";
 // import Swal from "sweetalert2";
 
 const ModalComponents = ({
@@ -32,15 +33,15 @@ const ModalComponents = ({
       .patch(`http://localhost:5000/alltutorial/${itme_id}`, updatedData)
       .then((data) => {
         console.log(data.data);
-        // if (data.data.acknowledged) {
-        //   Swal.fire({
-        //     position: "top-center",
-        //     icon: "success",
-        //     title: "Successfully Added Tutorials",
-        //     showConfirmButton: false,
-        //     timer: 1500,
-        //   });
-        // }
+        if (data.data.modifiedCount > 0) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Tutorial Update Successfull",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
   };
   return (
@@ -124,7 +125,7 @@ const ModalComponents = ({
             <Label htmlFor="customizatin">Description</Label>
             <div>
               <Textarea
-              className="border-black"
+                className="border-black"
                 name="description"
                 placeholder="Write your description"
                 defaultValue={itme_description}

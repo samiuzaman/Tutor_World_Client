@@ -10,7 +10,7 @@
 @tailwind utilities;
 
 body {
-  @apply font-Poppins;
+  @apply font-Poppins bg-[#F5F6F9];
 }
 .loader {
   @apply min-h-screen w-full flex justify-center items-center;
