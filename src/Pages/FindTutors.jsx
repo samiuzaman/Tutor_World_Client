@@ -17,8 +17,8 @@ const FindTutors = () => {
   console.log(loadedData);
 
   return (
-    <div className="border-t border-metal-300">
-      <div className="w-11/12 lg:w-5/6 mx-auto flex flex-col lg:flex-row justify-between items-center py-8">
+    <div className="bg-white border-t border-metal-300">
+      <div className="w-11/12 lg:w-5/6 mx-auto  flex flex-col lg:flex-row justify-between items-center py-8">
         <div className="w-full lg:w-2/3">
           <h2 className="text-[#313140] text-2xl lg:text-4xl font-bold font-Fira">
             Find your Language teacher online

@@ -14,18 +14,22 @@ import {
   TooltipContent,
   TooltipProvider,
 } from "keep-react";
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Logo from "../assets/tw_logo.png";
 import { MdPerson2 } from "react-icons/md";
 import useAuth from "../Hook/useAuth";
 import { IoMdExit } from "react-icons/io";
 
 const NavbarComponent = () => {
+  const location = useLocation();
+  console.log(location);
   const { user, handleSignOut } = useAuth();
   const navigate = useNavigate();
 
   return (
-    <Navbar className="w-11/12 mx-auto border-none">
+    <Navbar
+      className={`px-[2%] lg:px-[7%]`}
+    >
       <NavbarContainer className="mx-auto p-2 md:p-0 ">
         <NavbarBrand>
           {/* <img src={KeepLogo} alt="keep" /> */}

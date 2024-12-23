@@ -16,8 +16,8 @@ const Category = () => {
         <Link to={`/findTutors?language=${category.category}`}>
           <div className="flex justify-around items-center gap-4 bg-white rounded-md p-4 border border-metal-400">
             <div className="flex items-center gap-2">
-              <img className="w-10 h-10" src={category.icon} />
-              <h4 className="text-2xl font-semibold">{category.category}</h4>
+              <img className="w-5 h-5 md:w-10 md:h-10" src={category.icon} />
+              <h4 className="text-lg md:text-2xl font-semibold">{category.category}</h4>
             </div>
             <SlArrowRight className="text-black"></SlArrowRight>
           </div>
