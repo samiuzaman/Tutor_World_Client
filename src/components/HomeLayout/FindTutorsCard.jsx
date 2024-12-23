@@ -9,7 +9,7 @@ const FindTutorsCard = ({ tutorial }) => {
   console.log(tutorial);
   return (
     <div>
-      <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-start p-4 gap-6">
+      <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-start p-4 gap-6 h-full">
         <div className="w-36 h-28">
           <img
             className="w-full h-full rounded-lg border border-error-500"

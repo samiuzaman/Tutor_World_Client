@@ -28,7 +28,7 @@ const NavbarComponent = () => {
 
   return (
     <Navbar
-      className={`px-[2%] lg:px-[7%]`}
+      className={`px-[2%] lg:px-[7%] shadow-lg`}
     >
       <NavbarContainer className="mx-auto p-2 md:p-0 ">
         <NavbarBrand>

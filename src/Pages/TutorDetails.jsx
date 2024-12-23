@@ -21,6 +21,7 @@ const TutorDetails = () => {
       tutor_id,
       tutor_email: email,
       bookers_email: user.email,
+      name,
       language,
       price,
       image,
