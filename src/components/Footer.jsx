@@ -3,7 +3,6 @@ import {
   FaFacebook,
   FaInstagram,
   FaLinkedin,
-  FaMedium,
   FaPhone,
   FaTwitter,
   FaYoutube,
@@ -16,7 +15,6 @@ import {
   SelectContent,
   SelectValue,
   SelectGroup,
-  SelectLabel,
   SelectItem,
 } from "keep-react";
 

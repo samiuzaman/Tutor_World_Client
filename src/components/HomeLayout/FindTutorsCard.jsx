@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 const FindTutorsCard = ({ tutorial }) => {
   const { _id, name, email, language, price, review, description, image } =
     tutorial;
-  console.log(tutorial);
   return (
     <div>
       <div className="border border-metal-300 bg-white dark:bg-metal-900 shadow-lg rounded-xl flex items-start p-4 gap-6 h-full">
@@ -18,6 +17,7 @@ const FindTutorsCard = ({ tutorial }) => {
         </div>
         <div className="w-full space-y-2">
           <CardTitle className="text-xl font-medium">{name}</CardTitle>
+          <CardDescription>{language} Language</CardDescription>
           <CardDescription>{description}</CardDescription>
 
           <div className="flex  items-center justify-end gap-5 ">
