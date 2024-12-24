@@ -5,8 +5,8 @@ const Help = () => {
     <div
       data-aos="fade-up"
       data-aos-duration="500"
-      data-aos-delay="500"
-      className="bg-white px-[4%] lg:px-[7%] py-12"
+      data-aos-delay="400"
+      className="bg-white dark:bg-metal-700 px-[4%] lg:px-[7%] py-12"
     >
       <h3 className="text-center text-2xl lg:text-4xl font-semibold text-black ">
         Need help? Let's get in touch

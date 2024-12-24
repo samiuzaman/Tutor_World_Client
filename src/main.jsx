@@ -6,14 +6,17 @@ import routes from "./Routes/Routes";
 import { HelmetProvider } from "react-helmet-async";
 import AuthProvider from "./Context/AuthProvider";
 import { ToastWrapper } from "keep-react";
+import { ThemeProvider } from "./Context/Theme-provider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <HelmetProvider>
-      <AuthProvider>
-        <RouterProvider router={routes}></RouterProvider>
-      </AuthProvider>
-      <ToastWrapper richColors={true} />
-    </HelmetProvider>
+    <ThemeProvider defaultTheme="light" storageKey="vite-ui-theme">
+      <HelmetProvider>
+        <AuthProvider>
+          <RouterProvider router={routes}></RouterProvider>
+        </AuthProvider>
+        <ToastWrapper richColors={true} />
+      </HelmetProvider>
+    </ThemeProvider>
   </StrictMode>
 );

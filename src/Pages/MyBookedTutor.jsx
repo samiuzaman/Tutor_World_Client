@@ -16,24 +16,24 @@ const MyBookedTutor = () => {
   const handleUpdateReview = (id) => {
     console.log(id);
     axios
-      .put(`http://localhost:5000/alltutorial/${id}`)
+      .put(`http://localhost:5000/mybooked/${id}`)
       .then((data) => console.log(data.data));
   };
 
   console.log(myBookedData);
   return (
-    <div className="w-11/12 lg:w-4/5 mx-auto my-12">
-      <h4>
+    <div className="w-11/12 lg:w-4/5 mx-auto py-12">
+      <h4  className="text-metal-800 dark:text-metal-200">
         {myBookedData.length} {myBookedData.length > 0 ? "Tutors" : "Tutor"} in
         Booked
       </h4>
       <Divider color="primary" className="my-4" />
       <div>
         {myBookedData?.map((bookData) => (
-          <div className="border border-metal-300 bg-white shadow-lg rounded-xl flex items-center p-4 gap-6 mb-5">
+          <div className="border border-metal-300 bg-white dark:bg-metal-900 shadow-lg rounded-xl flex items-center p-4 gap-6 mb-5">
             <div className="w-40 h-28">
               <img
-                className="w-full h-full rounded-lg border border-error-500"
+                className="w-full h-full rounded-lg border border-metal-200"
                 src={bookData.image}
               />
             </div>
@@ -42,7 +42,7 @@ const MyBookedTutor = () => {
                 <CardTitle className="text-xl font-medium">
                   {bookData.name}
                 </CardTitle>
-                <p>{bookData.language} Tutor</p>
+                <p className="text-metal-700 dark:text-metal-300">{bookData.language} Tutor</p>
                 <p className="text-xl font-medium text-error-500">
                   {" "}
                   ${bookData.price}
@@ -50,9 +50,7 @@ const MyBookedTutor = () => {
               </div>
 
               <div className="space-y-2 lg:space-y-3 flex flex-col lg:flex-row justify-end items-center gap-4 ">
-                <p className="text-metal-500 font-medium text-base flex  gap-1 items-center">
-                  5 <FaStar className="text-warning-400 " />:{bookData.review}
-                </p>
+                
                 <Button
                   onClick={() => handleUpdateReview(bookData.tutor_id)}
                   color="error"

@@ -3,6 +3,8 @@ import FindTutorsCard from "../components/HomeLayout/FindTutorsCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { buttonVariants, Empty, EmptyImage, EmptyTitle } from "keep-react";
+import Learn from "../assets/Learn.json";
+import Lottie from "lottie-react";
 
 const FindTutors = () => {
   const loadedData = useLoaderData();
@@ -17,21 +19,23 @@ const FindTutors = () => {
   console.log(loadedData);
 
   return (
-    <div className="bg-white border-t border-metal-300">
-      <div className="w-11/12 lg:w-5/6 mx-auto  flex flex-col lg:flex-row justify-between items-center py-8">
+    <div className="bg-white dark:bg-metal-900 border-t border-metal-300">
+      <div className="w-11/12 lg:w-5/6 mx-auto flex  flex-col-reverse lg:flex-row justify-between items-center gap-8 py-8">
         <div className="w-full lg:w-2/3">
-          <h2 className="text-[#313140] text-2xl lg:text-4xl font-bold font-Fira">
+          <h2 className="text-[#313140] dark:text-white text-2xl lg:text-4xl font-bold font-Fira">
             Find your Language teacher online
           </h2>
-          <p className="text-metal-700 mt-4">
+          <p className="text-metal-700 dark:text-metal-300 mt-4">
             Find Tutors ensures that users can easily find the best tutors
             tailored to their learning preferences, making the process of
             connecting with experts both simple and efficient.
           </p>
         </div>
-        <div>Animation</div>
+        <div className="w-full lg:w-1/3">
+          <Lottie animationData={Learn}></Lottie>
+        </div>
       </div>
-      <div className="bg-[#F5F6F9] py-12">
+      <div className="bg-[#F5F6F9] dark:bg-metal-800 py-12">
         {tutorData.length > 0 ? (
           <div className="w-11/12 lg:w-5/6 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
             {tutorData.map((tutorial) => (

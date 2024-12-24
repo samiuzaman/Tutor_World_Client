@@ -22,14 +22,14 @@ import {
 
 const Footer = () => {
   return (
-    <div className={` bg-metal-200 shadow-small `}>
+    <div className={` bg-metal-200 dark:bg-metal-900 shadow-small `}>
       <div className="mx-auto lg:px-20 px-6 py-10 2xl:px-0">
         <div className="flex flex-col gap-12 lg:flex-row">
           <footer className="w-full md:w-3/4 lg:w-1/2 mx-auto space-y-3">
             <h4 className="text-xl lg:text-3xl text-error-400 font-bold">
               Tutor World
             </h4>
-            <p>Learn a language</p>
+            <p className="dark:text-metal-300">Learn a language</p>
             <Select name="language">
               <SelectAction className="w-full md:w-[16rem]">
                 <SelectValue placeholder="English" />
@@ -54,14 +54,14 @@ const Footer = () => {
             <h4 className="mb-3 text-body-3 text-xl font-semibold text-metal-900 dark:text-white">
               Contact
             </h4>
-            <p className="text-metal-600 mb-2">
+            <p className="text-metal-600 mb-2 dark:text-metal-300">
               484 Trevor Junctions, Hettieport-17316, Columbia, USA
             </p>
-            <p className="flex items-center gap-2 text-metal-600 mb-2">
+            <p className="flex items-center gap-2 text-metal-600 mb-2 dark:text-metal-300">
               <FaPhone />
               16784518001
             </p>
-            <p className="flex items-center gap-2 text-metal-600">
+            <p className="flex items-center gap-2 text-metal-600 dark:text-metal-300">
               <FaEnvelope />
               info@tutorworld.com
             </p>

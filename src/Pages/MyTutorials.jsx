@@ -57,17 +57,17 @@ const MyTutorials = () => {
   };
 
   return (
-    <div className="bg-[#F5F6F9]">
-      <Table className="w-11/12 lg:w-5/6 mx-auto my-12">
-        <TableHeader>
-          <TableRow className="text-center">
-            <TableHead>No</TableHead>
-            <TableHead>Image</TableHead>
-            <TableHead>Name</TableHead>
-            <TableHead>language</TableHead>
-            <TableHead>review</TableHead>
-            <TableHead>description</TableHead>
-            <TableHead></TableHead>
+    <div className="bg-[#F5F6F9] dark:bg-metal-800 dark:border-metal-300">
+      <Table className="w-11/12 lg:w-5/6 mx-auto my-12 dark:bg-metal-700 border dark:border-metal-200">
+        <TableHeader className="">
+          <TableRow className="text-center ">
+            <TableHead className="dark:bg-metal-900">No</TableHead>
+            <TableHead className="dark:bg-metal-900">Image</TableHead>
+            <TableHead className="dark:bg-metal-900">Name</TableHead>
+            <TableHead className="dark:bg-metal-900">language</TableHead>
+            <TableHead className="dark:bg-metal-900">review</TableHead>
+            <TableHead className="dark:bg-metal-900">description</TableHead>
+            <TableHead className="dark:bg-metal-900"></TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>

@@ -2,13 +2,18 @@ import { Divider, Button, InputIcon, Input, Label, Textarea } from "keep-react";
 
 const Connect = () => {
   return (
-    <div className=" px-[8%] lg:px-[12%] flex flex-col lg:flex-row justify-between gap-20 py-20">
-      <div className="w-full lg:w-1/2">
-        <h3 className="text-2xl lg:text-4xl font-bold text-metal-800 ">
+    <div
+      data-aos="fade-up"
+      data-aos-duration="500"
+      data-aos-delay="500"
+      className=" px-[8%] lg:px-[12%] flex flex-col lg:flex-row justify-between gap-20 py-20"
+    >
+      <div className="w-full lg:w-1/2 ">
+        <h3 className="text-2xl lg:text-4xl font-bold text-metal-800 dark:text-white">
           Connect with Me
         </h3>
         <Divider color="error" className="my-6 lg:mr-10" />
-        <p className="text-metal-700">
+        <p className="text-metal-700 dark:text-metal-400">
           Have a question about tutors or our services? Drop us a message, and
           we’ll be happy to assist you in every step of your learning journey.
         </p>

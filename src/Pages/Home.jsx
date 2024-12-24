@@ -12,7 +12,7 @@ const Home = () => {
         <title>Home | Sports Equipify</title>
         <link rel="canonical" href="/" />
       </Helmet>
-      <div className="">
+      <div className="dark:bg-metal-800">
         <Banner></Banner>
         <Stats></Stats>
         <Outlet></Outlet>
