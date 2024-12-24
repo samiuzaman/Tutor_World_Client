@@ -17,16 +17,16 @@ const Banner = () => {
   return (
     <div
       data-aos="zoom-in-up"
-      className={`bg-[#EAE1BA] flex z-20 justify-between items-center px-[7%] `}
+      className={`bg-[#EAE1BA] flex flex-col lg:flex-row justify-between items-center px-[7%] z-20`}
     >
-      <div className="w-full lg:w-1/2 space-y-4 p-6 ">
+      <div className="w-full lg:w-1/2 space-y-4 p-2 lg:p-6 py-8">
         <h2
           data-aos="fade-up"
           data-aos-duration="500"
           data-aos-delay="400"
           className="text-3xl lg:text-4xl font-bold text-[#e056fd] leading-relaxed"
         >
-          Your Journey to Mastery Starts Here, Find the Perfect Tutor
+          Your Journey to Mastery Starts Here, Find the Perfect
         </h2>
         <p
           data-aos="fade-up"
