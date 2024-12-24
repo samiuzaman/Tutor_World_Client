@@ -19,7 +19,7 @@ const Banner = () => {
       data-aos="zoom-in-up"
       className={`bg-[#EAE1BA] flex z-20 justify-between items-center px-[7%] `}
     >
-      <div className="w-full lg:w-1/2 space-y-4 p-4 ">
+      <div className="w-full lg:w-1/2 space-y-4 p-6 ">
         <h2
           data-aos="fade-up"
           data-aos-duration="500"

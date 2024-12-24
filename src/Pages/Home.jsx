@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import Stats from "../components/HomeLayout/Stats";
 import Banner from "../components/HomeLayout/Banner";
 import Connect from "../components/HomeLayout/Connect";
+import Help from "../components/HomeLayout/Help";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <Banner></Banner>
         <Stats></Stats>
         <Outlet></Outlet>
+        <Help></Help>
         <Connect></Connect>
       </div>
     </div>
