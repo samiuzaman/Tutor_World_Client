@@ -11,7 +11,7 @@ const Category = () => {
       .then((data) => setCategory(data.data));
   }, []);
   return (
-    <div className="w-11/12 lg:w-5/6 mx-auto grid grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="w-11/12 lg:w-5/6 mx-auto grid grid-cols-2 lg:grid-cols-3 gap-8 py-16">
       {category?.map((category) => (
         <Link to={`/findTutors?language=${category.category}`}>
           <div className="flex justify-around items-center gap-4 bg-white rounded-md p-4 border border-metal-400">

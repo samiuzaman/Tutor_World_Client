@@ -27,7 +27,7 @@ const NavbarComponent = () => {
   const navigate = useNavigate();
 
   return (
-    <Navbar className={`px-[2%] lg:px-[7%] shadow-lg`}>
+    <Navbar className={`sticky top-0 px-[2%] lg:px-[7%] shadow-lg`}>
       <NavbarContainer className="mx-auto p-2 md:p-0 ">
         <NavbarBrand>
           {/* <img src={KeepLogo} alt="keep" /> */}
