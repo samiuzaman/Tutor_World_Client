@@ -27,13 +27,10 @@ const MyTutorials = () => {
   useEffect(() => {
     axios
       .get(`http://localhost:5000/alltutorial?email=${user.email}`)
-      .then((data) => setMyTutorials(data.data))
-      .catch((error) => console.log(error));
-  }, []);
+      .then((data) => setMyTutorials(data.data));
+  }, [setMyTutorials]);
 
   const handleDeleteTutorial = (id) => {
-    console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -44,13 +41,16 @@ const MyTutorials = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((data) => {
       axios.delete(`http://localhost:5000/alltutorial/${id}`).then((data) => {
-        console.log(data.data);
         if (data.data.deletedCount > 0) {
           Swal.fire({
             title: "Deleted!",
             text: " Tutorial has been deleted.",
             icon: "success",
           });
+          const remainingData = myTutorials.filter(
+            (tutorial) => tutorial._id !== id
+          );
+          setMyTutorials(remainingData);
         }
       });
     });
@@ -84,38 +84,41 @@ const MyTutorials = () => {
               <TableCell>{item.language}</TableCell>
               <TableCell>{item.review}</TableCell>
               <TableCell>{item.description}</TableCell>
+              <TableCell className="flex items-center">
+                <Modal className="w-[400px]">
+                  <div className="flex">
+                    <ModalAction asChild>
+                      <Button variant="link" color="success">
+                        <CiEdit className="text-2xl mt-4" />
+                      </Button>
+                    </ModalAction>
+                  </div>
+                  <ModalContent className="max-w-[20rem] lg:max-w-[26rem]">
+                    <ModalHeader className="mb-6 flex flex-col items-center justify-center space-y-3">
+                      <h4>Modal</h4>
+                      <ModalComponents
+                        itme_id={item._id}
+                        itme_language={item.language}
+                        itme_price={item.price}
+                        itme_description={item.description}
+                        itme_item={item.image}
+                        key={item?._id}
+                        myTutorials={myTutorials}
+                        setMyTutorials={setMyTutorials}
+                      ></ModalComponents>
+                    </ModalHeader>
+                  </ModalContent>
+                </Modal>
 
-              <Modal className="w-[400px]">
-                <div className="flex">
-                  <ModalAction asChild>
-                    <Button variant="link" color="success">
-                      <CiEdit className="text-2xl mt-4" />
-                    </Button>
-                  </ModalAction>
-                  <Button
-                    variant="link"
-                    color="error"
-                    className="text-2xl  mt-2"
-                    onClick={() => handleDeleteTutorial(item._id)}
-                  >
-                    {" "}
-                    <MdDeleteForever />{" "}
-                  </Button>
-                </div>
-                <ModalContent className="max-w-[20rem] lg:max-w-[26rem]">
-                  <ModalHeader className="mb-6 flex flex-col items-center justify-center space-y-3">
-                    <h4>Modal</h4>
-                    <ModalComponents
-                      itme_id={item._id}
-                      itme_language={item.language}
-                      itme_price={item.price}
-                      itme_description={item.description}
-                      itme_item={item.image}
-                      key={item?._id}
-                    ></ModalComponents>
-                  </ModalHeader>
-                </ModalContent>
-              </Modal>
+                <Button
+                  variant="link"
+                  color="error"
+                  className="text-2xl  mt-2"
+                  onClick={() => handleDeleteTutorial(item._id)}
+                >
+                  <MdDeleteForever />
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -10,10 +10,12 @@ import {
   SelectItem,
   Textarea,
   SelectLabel,
+  ModalAction,
 } from "keep-react";
 import useAuth from "../Hook/useAuth";
 import axios from "axios";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 // import Swal from "sweetalert2";
 
 const ModalComponents = ({
@@ -24,15 +26,14 @@ const ModalComponents = ({
   itme_item,
 }) => {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const handleUpdatTutorial = (event) => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const updatedData = Object.fromEntries(formData.entries());
-    console.log(updatedData);
     axios
       .patch(`http://localhost:5000/alltutorial/${itme_id}`, updatedData)
       .then((data) => {
-        console.log(data.data);
         if (data.data.modifiedCount > 0) {
           Swal.fire({
             position: "top-center",
@@ -41,6 +42,8 @@ const ModalComponents = ({
             showConfirmButton: false,
             timer: 1500,
           });
+
+          navigate("/myTutorials");
         }
       });
   };
@@ -148,7 +151,7 @@ const ModalComponents = ({
         </div>
 
         <Button size="sm" color="secondary" type="submit" className="w-full">
-          Submit
+          Update
         </Button>
       </form>
     </div>

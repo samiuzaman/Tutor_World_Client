@@ -16,7 +16,7 @@ const TutorDetails = () => {
     details;
 
   const handleBookNow = (tutor_id) => {
-    console.log(tutor_id);
+    c
     const myBookedTutor = {
       tutor_id,
       tutor_email: email,
@@ -26,9 +26,9 @@ const TutorDetails = () => {
       price,
       image,
     };
-    console.log(myBookedTutor);
+    
     axios.post(`http://localhost:5000/mybooked`, myBookedTutor).then((data) => {
-      console.log(data.data);
+      
       if (data.data.insertedId) {
         Swal.fire({
           title: "Tutor has been booked",

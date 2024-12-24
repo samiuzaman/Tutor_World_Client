@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import useAuth from "../Hook/useAuth";
 import { Button, CardDescription, CardTitle, Divider } from "keep-react";
+import Swal from "sweetalert2";
 
 const MyBookedTutor = () => {
   const { user } = useAuth();
@@ -14,16 +15,24 @@ const MyBookedTutor = () => {
   }, []);
 
   const handleUpdateReview = (id) => {
-    console.log(id);
-    axios
-      .put(`http://localhost:5000/mybooked/${id}`)
-      .then((data) => console.log(data.data));
+    
+    axios.put(`http://localhost:5000/mybooked/${id}`).then((data) => {
+      if (data.data.modifiedCount > 0) {
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Thank you for the review",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
   };
 
-  console.log(myBookedData);
+
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto py-12">
-      <h4  className="text-metal-800 dark:text-metal-200">
+      <h4 className="text-metal-800 dark:text-metal-200">
         {myBookedData.length} {myBookedData.length > 0 ? "Tutors" : "Tutor"} in
         Booked
       </h4>
@@ -42,7 +51,9 @@ const MyBookedTutor = () => {
                 <CardTitle className="text-xl font-medium">
                   {bookData.name}
                 </CardTitle>
-                <p className="text-metal-700 dark:text-metal-300">{bookData.language} Tutor</p>
+                <p className="text-metal-700 dark:text-metal-300">
+                  {bookData.language} Tutor
+                </p>
                 <p className="text-xl font-medium text-error-500">
                   {" "}
                   ${bookData.price}
@@ -50,7 +61,6 @@ const MyBookedTutor = () => {
               </div>
 
               <div className="space-y-2 lg:space-y-3 flex flex-col lg:flex-row justify-end items-center gap-4 ">
-                
                 <Button
                   onClick={() => handleUpdateReview(bookData.tutor_id)}
                   color="error"

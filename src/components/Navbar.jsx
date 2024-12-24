@@ -28,7 +28,7 @@ import { MoonStars, SunDim } from "phosphor-react";
 
 const NavbarComponent = () => {
   const location = useLocation();
-  console.log(location);
+  
   const { user, handleSignOut } = useAuth();
   const navigate = useNavigate();
   const { setTheme } = useTheme();

@@ -12,9 +12,9 @@ const Category = () => {
   }, []);
   return (
     <div
-      data-aos="zoom-out-down"
+      data-aos="fade-up"
       data-aos-duration="500"
-      data-aos-delay="200"
+      data-aos-delay="500"
       className="w-11/12 lg:w-5/6 mx-auto grid grid-cols-2 lg:grid-cols-3 gap-8 py-16"
     >
       {category?.map((category) => (

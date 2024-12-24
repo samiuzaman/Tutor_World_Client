@@ -23,7 +23,7 @@ const FindTutors = () => {
   const location = useLocation();
   const [tutorData, setTutorData] = useState(loadedData);
   const [search, setSearch] = useState("");
-  console.log(search);
+  
   const handleSearch = (event) => {
     setSearch(event.target.value);
     axios
@@ -57,7 +57,7 @@ const FindTutors = () => {
         <div className="w-11/12 lg:w-5/6 mx-auto flex justify-between items-center mb-4">
           <div>
             <Select name="language">
-              <SelectAction className="w-full md:w-[16rem]">
+              <SelectAction className="w-full md:w-[16rem] border-2 border-metal-400">
                 <SelectValue placeholder="English" />
               </SelectAction>
               <SelectContent>
@@ -81,6 +81,7 @@ const FindTutors = () => {
               placeholder="Search"
               name="search"
               type="text"
+              className="border-2 border-metal-400"
             />
           </div>
         </div>

@@ -23,11 +23,11 @@ const AddTutorials = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const initialData = Object.fromEntries(formData.entries());
-    console.log(initialData);
+   
     axios
       .post("http://localhost:5000/alltutorial", initialData)
       .then((data) => {
-        console.log(data.data);
+        
         if (data.data.acknowledged) {
           Swal.fire({
             position: "top-center",
@@ -39,7 +39,7 @@ const AddTutorials = () => {
         }
       });
   };
-  console.log(user);
+
   return (
     <div className="dark:bg-metal-800">
       <div className="w-11/12 lg:w-4/5 mx-auto py-12">
