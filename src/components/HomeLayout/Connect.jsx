@@ -27,9 +27,9 @@ const Connect = () => {
           </div>
         </fieldset>
 
-        <fieldset className="space-y-1.5 p-2">
+        <fieldset className="space-y-1.5 ">
           <Label htmlFor="message">Your message*</Label>
-          <Textarea id="message" rows={2} className="" />
+          <Textarea id="message" rows={2} className="w-full" />
         </fieldset>
         <Button color="error" className="w-full mt-2">
           Send

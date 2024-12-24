@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 
 const MainLayout = () => {
   return (
-    <div>
+    <div className="font-Poppins">
       <Navbar></Navbar>
       <Outlet></Outlet>
       <Footer></Footer>
