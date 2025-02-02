@@ -4,10 +4,6 @@ import useAuth from "../Hook/useAuth";
 import {
   Avatar,
   Button,
-  Modal,
-  ModalAction,
-  ModalContent,
-  ModalHeader,
   Table,
   TableBody,
   TableCell,
@@ -18,12 +14,12 @@ import {
 import Swal from "sweetalert2";
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
-import ModalComponents from "../components/Modal";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 
 const MyTutorials = () => {
   const { user } = useAuth();
-  const [myTutorials, setMyTutorials] = useState();
+  const [myTutorials, setMyTutorials] = useState([]);
   useEffect(() => {
     axios
       .get(`${import.meta.env.VITE_API_URL}/alltutorial?email=${user.email}`, {
@@ -90,35 +86,16 @@ const MyTutorials = () => {
                 </Avatar>
               </TableCell>
 
-              <TableCell>{item?.name}</TableCell>
-              <TableCell>{item?.language}</TableCell>
-              <TableCell>{item?.review}</TableCell>
-              <TableCell>{item?.description.substring(0, 28)}...</TableCell>
+              <TableCell>{item.name}</TableCell>
+              <TableCell>{item.language}</TableCell>
+              <TableCell>{item.review}</TableCell>
+              <TableCell>{item.description.substring(0, 28)}...</TableCell>
               <TableCell className="flex items-center">
-                <Modal className="w-[400px]">
-                  <div className="flex">
-                    <ModalAction asChild>
-                      <Button variant="link" color="success">
-                        <CiEdit className="text-2xl mt-4" />
-                      </Button>
-                    </ModalAction>
-                  </div>
-                  <ModalContent className="max-w-[20rem] lg:max-w-[26rem]">
-                    <ModalHeader className="mb-6 flex flex-col items-center justify-center space-y-3">
-                      <h4>Modal</h4>
-                      <ModalComponents
-                        itme_id={item._id}
-                        itme_language={item.language}
-                        itme_price={item.price}
-                        itme_description={item.description}
-                        itme_item={item.image}
-                        key={item?._id}
-                        myTutorials={myTutorials}
-                        setMyTutorials={setMyTutorials}
-                      ></ModalComponents>
-                    </ModalHeader>
-                  </ModalContent>
-                </Modal>
+                <Link to={`/update/${item?._id}`}>
+                  <Button variant="link" color="success">
+                    <CiEdit className="text-2xl mt-4" />
+                  </Button>
+                </Link>
 
                 <Button
                   variant="link"

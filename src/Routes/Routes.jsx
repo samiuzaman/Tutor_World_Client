@@ -12,6 +12,7 @@ import AddTutorials from "../Pages/AddTutorials";
 import MyTutorials from "../Pages/MyTutorials";
 import MyBookedTutor from "../Pages/MyBookedTutor";
 import Category from "../components/HomeLayout/Category";
+import Update from "../Pages/Update";
 
 const routes = createBrowserRouter([
   {
@@ -67,6 +68,14 @@ const routes = createBrowserRouter([
           <PrivetRoute>
             {" "}
             <MyBookedTutor></MyBookedTutor>{" "}
+          </PrivetRoute>
+        ),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivetRoute>
+            <Update></Update>
           </PrivetRoute>
         ),
       },
