@@ -19,7 +19,7 @@ import {
   DropdownItem,
 } from "keep-react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-import Logo from "../assets/tw_logo.png";
+import Logo from "../assets/logo.png";
 import { MdPerson2 } from "react-icons/md";
 import useAuth from "../Hook/useAuth";
 import { IoMdExit } from "react-icons/io";
@@ -28,7 +28,7 @@ import { MoonStars, SunDim } from "phosphor-react";
 
 const NavbarComponent = () => {
   const location = useLocation();
-  
+
   const { user, handleSignOut } = useAuth();
   const navigate = useNavigate();
   const { setTheme } = useTheme();
@@ -44,7 +44,7 @@ const NavbarComponent = () => {
             to="/"
             className="flex justify-center items-center text-2xl text-error-400 font-semibold"
           >
-            <img className="w-8 h-7" src={Logo} />
+            <img className="w-18 h-8" src={Logo} />
             Tutor World
           </Link>
         </NavbarBrand>

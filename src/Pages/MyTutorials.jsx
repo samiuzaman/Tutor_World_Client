@@ -7,7 +7,6 @@ import {
   Modal,
   ModalAction,
   ModalContent,
-  ModalFooter,
   ModalHeader,
   Table,
   TableBody,
@@ -20,13 +19,16 @@ import Swal from "sweetalert2";
 import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import ModalComponents from "../components/Modal";
+import { Helmet } from "react-helmet-async";
 
 const MyTutorials = () => {
   const { user } = useAuth();
   const [myTutorials, setMyTutorials] = useState();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/alltutorial?email=${user.email}`)
+      .get(`${import.meta.env.VITE_API_URL}/alltutorial?email=${user.email}`, {
+        withCredentials: true,
+      })
       .then((data) => setMyTutorials(data.data));
   }, [setMyTutorials]);
 
@@ -40,24 +42,32 @@ const MyTutorials = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((data) => {
-      axios.delete(`http://localhost:5000/alltutorial/${id}`).then((data) => {
-        if (data.data.deletedCount > 0) {
-          Swal.fire({
-            title: "Deleted!",
-            text: " Tutorial has been deleted.",
-            icon: "success",
-          });
-          const remainingData = myTutorials.filter(
-            (tutorial) => tutorial._id !== id
-          );
-          setMyTutorials(remainingData);
-        }
-      });
+      axios
+        .delete(`${import.meta.env.VITE_API_URL}/alltutorial/${id}`, {
+          withCredentials: true,
+        })
+        .then((data) => {
+          if (data.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: " Tutorial has been deleted.",
+              icon: "success",
+            });
+            const remainingData = myTutorials.filter(
+              (tutorial) => tutorial._id !== id
+            );
+            setMyTutorials(remainingData);
+          }
+        });
     });
   };
 
   return (
     <div className="bg-[#F5F6F9] dark:bg-metal-800 dark:border-metal-300">
+      <Helmet>
+        <title> My Tutorials | Tutor World</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <Table className="w-11/12 lg:w-5/6 mx-auto my-12 dark:bg-metal-700 border dark:border-metal-200">
         <TableHeader className="">
           <TableRow className="text-center ">
@@ -80,10 +90,10 @@ const MyTutorials = () => {
                 </Avatar>
               </TableCell>
 
-              <TableCell>{item.name}</TableCell>
-              <TableCell>{item.language}</TableCell>
-              <TableCell>{item.review}</TableCell>
-              <TableCell>{item.description}</TableCell>
+              <TableCell>{item?.name}</TableCell>
+              <TableCell>{item?.language}</TableCell>
+              <TableCell>{item?.review}</TableCell>
+              <TableCell>{item?.description.substring(0, 28)}...</TableCell>
               <TableCell className="flex items-center">
                 <Modal className="w-[400px]">
                   <div className="flex">

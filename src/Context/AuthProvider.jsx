@@ -10,7 +10,8 @@ import {
   sendPasswordResetEmail,
 } from "firebase/auth";
 import auth from "../Firebase/firebase.init";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import axios from "axios";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
@@ -72,8 +73,22 @@ const AuthProvider = ({ children }) => {
   // Login retention function
   useEffect(() => {
     const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setLoading(false);
+      if (currentUser?.email) {
+        setUser(currentUser);
+        const user = { email: currentUser?.email };
+        axios
+          .post(`${import.meta.env.VITE_API_URL}/jwt`, user, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data));
+        setLoading(false);
+      } else {
+        setUser(currentUser);
+        axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
+          withCredentials: true,
+        });
+        setLoading(false);
+      }
     });
 
     return () => {

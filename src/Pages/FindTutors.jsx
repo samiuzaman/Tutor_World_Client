@@ -17,30 +17,44 @@ import {
 } from "keep-react";
 import Learn from "../assets/Learn.json";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const FindTutors = () => {
   const loadedData = useLoaderData();
   const location = useLocation();
   const [tutorData, setTutorData] = useState(loadedData);
   const [search, setSearch] = useState("");
-  
+  const [filter, setFilter] = useState("");
+  console.log(filter);
+
   const handleSearch = (event) => {
     setSearch(event.target.value);
     axios
-      .get(`http://localhost:5000/alltutorial?search=${search}`)
+      .get(`${import.meta.env.VITE_API_URL}/alltutorial?search=${search}`)
       .then((data) => setTutorData(data.data));
   };
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/alltutorial${location.search}`)
+      .get(`${import.meta.env.VITE_API_URL}/alltutorial${location.search}`)
       .then((data) => setTutorData(data.data));
   }, []);
 
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/alltutorial?language=${filter}`)
+      .then((data) => setTutorData(data.data));
+  }, [setTutorData, filter]);
+
   return (
     <div className="bg-white dark:bg-metal-900 border-t border-metal-300">
+      <Helmet>
+        <title>Find Tutors | Tutor World</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <div>
         <div className="w-11/12 lg:w-5/6 mx-auto flex  flex-col-reverse lg:flex-row justify-between items-center gap-8 py-8">
           <div className="w-full lg:w-2/3">
+            <h2></h2>
             <h2 className="text-[#313140] dark:text-white text-2xl lg:text-4xl font-bold font-Fira">
               Find your Language teacher online
             </h2>
@@ -54,11 +68,11 @@ const FindTutors = () => {
             <Lottie animationData={Learn}></Lottie>
           </div>
         </div>
-        <div className="w-11/12 lg:w-5/6 mx-auto flex justify-between items-center mb-4">
+        <div className="w-11/12 lg:w-5/6 mx-auto flex justify-between items-center mb-4 gap-3">
           <div>
-            <Select name="language">
+            <Select name="language" onValueChange={(e) => setFilter(e)}>
               <SelectAction className="w-full md:w-[16rem] border-2 border-metal-400">
-                <SelectValue placeholder="English" />
+                <SelectValue placeholder="Filter" />
               </SelectAction>
               <SelectContent>
                 <SelectGroup>

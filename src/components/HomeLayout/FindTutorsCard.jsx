@@ -21,8 +21,10 @@ const FindTutorsCard = ({ tutorial }) => {
           <CardDescription>{description}</CardDescription>
 
           <div className="flex  items-center justify-end gap-5 ">
-            <p className="text-metal-500 font-medium text-base flex gap-1 items-center">
-              5 <FaStar className="text-warning-400 text-lg" />: {review}
+            <p className="text-metal-500 font-medium text-base flex justify-center gap-1 items-center">
+              5{" "}
+              <FaStar className="flex items-center text-warning-400 text-lg" />:{" "}
+              {review}
             </p>
             <Button
               variant="link"

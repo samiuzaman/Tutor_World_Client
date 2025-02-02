@@ -8,7 +8,7 @@ const ErrorPage = () => {
   return (
     <div className="h-screen flex flex-col justify-center items-center">
       <Helmet>
-        <title>Error | Career Climb</title>
+        <title>Error | Tutor World</title>
         <link rel="canonical" href="/" />
       </Helmet>
 

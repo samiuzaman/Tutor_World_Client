@@ -16,36 +16,40 @@ import {
   SelectValue,
   SelectGroup,
   SelectItem,
+  ButtonGroup,
+  Input,
+  InputIcon,
+  Button,
 } from "keep-react";
+import { Envelope } from "phosphor-react";
 
 const Footer = () => {
   return (
-    <div className={` bg-metal-200 dark:bg-metal-900 shadow-small `}>
+    <div className={`xl:px-[6%] bg-metal-200 dark:bg-metal-900 shadow-small `}>
       <div className="mx-auto lg:px-20 px-6 py-10 2xl:px-0">
         <div className="flex flex-col gap-12 lg:flex-row">
           <footer className="w-full md:w-3/4 lg:w-1/2 mx-auto space-y-3">
             <h4 className="text-xl lg:text-3xl text-error-400 font-bold">
               Tutor World
             </h4>
-            <p className="dark:text-metal-300">Learn a language</p>
-            <Select name="language">
-              <SelectAction className="w-full md:w-[16rem]">
-                <SelectValue placeholder="English" />
-              </SelectAction>
-              <SelectContent>
-                <SelectGroup>
-                  <SelectItem value="Arabic">Arabic</SelectItem>
-                  <SelectItem value="Bengali">Bengali </SelectItem>
-                  <SelectItem value="English">English</SelectItem>
-                  <SelectItem value="German">German</SelectItem>
-                  <SelectItem value="Hindi">Hindi</SelectItem>
-                  <SelectItem value="Italian">Italian</SelectItem>
-                  <SelectItem value="Japanese">Japanese</SelectItem>
-                  <SelectItem value="Korean">Korean</SelectItem>
-                  <SelectItem value="Turkish">Turkish</SelectItem>
-                </SelectGroup>
-              </SelectContent>
-            </Select>
+            <h2>Subscribe Our NewsLetter</h2>
+            <div>
+              <fieldset className="relative w-full lg:w-72  ">
+                <ButtonGroup>
+                  <Input
+                    placeholder="Enter email"
+                    className="ps-11 border-[#FC601D] outline-[#FC601D]"
+                  />
+                  <InputIcon>
+                    <Envelope size={19} color="#AFBACA" />
+                  </InputIcon>
+
+                  <Button className="bg-[#FC601D] absolute right-1">
+                    Submit
+                  </Button>
+                </ButtonGroup>
+              </fieldset>
+            </div>
           </footer>
 
           <div className="w-full md:w-3/4 lg:w-1/2 mx-auto space-y-3">

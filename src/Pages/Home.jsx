@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <div>
       <Helmet>
-        <title>Home | Sports Equipify</title>
+        <title>Home | Tutor World</title>
         <link rel="canonical" href="/" />
       </Helmet>
       <div className="dark:bg-metal-800">

@@ -2,36 +2,56 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { FaStar } from "react-icons/fa";
 import useAuth from "../Hook/useAuth";
-import { Button, CardDescription, CardTitle, Divider } from "keep-react";
+import { Button, CardDescription, CardTitle, Divider, toast } from "keep-react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyBookedTutor = () => {
   const { user } = useAuth();
   const [myBookedData, setMyBookedData] = useState([]);
+  const promise = () =>
+    new Promise((resolve) =>
+      setTimeout(() => resolve({ name: "Keep React" }), 2000)
+    );
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/mybooked?email=${user.email}`)
+      .get(`${import.meta.env.VITE_API_URL}/mybooked?email=${user.email}`, {
+        withCredentials: true,
+      })
       .then((data) => setMyBookedData(data.data));
   }, []);
 
   const handleUpdateReview = (id) => {
-    
-    axios.put(`http://localhost:5000/mybooked/${id}`).then((data) => {
-      if (data.data.modifiedCount > 0) {
-        Swal.fire({
-          position: "top-center",
-          icon: "success",
-          title: "Thank you for the review",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-      }
-    });
+    axios
+      .put(`${import.meta.env.VITE_API_URL}/mybooked/${id}`, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        if (data.data.modifiedCount > 0) {
+          // Swal.fire({
+          //   position: "top-center",
+          //   icon: "success",
+          //   title: "Thank you for the review",
+          //   showConfirmButton: false,
+          //   timer: 1500,
+          // });
+          toast.promise(promise, {
+            loading: "Loading...",
+            success: () => {
+              return `Thanks ${user.displayName} for Review`;
+            },
+            error: "Error",
+          });
+        }
+      });
   };
-
 
   return (
     <div className="w-11/12 lg:w-4/5 mx-auto py-12">
+      <Helmet>
+        <title>My Booked | Tutor World</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <h4 className="text-metal-800 dark:text-metal-200">
         {myBookedData.length} {myBookedData.length > 0 ? "Tutors" : "Tutor"} in
         Booked

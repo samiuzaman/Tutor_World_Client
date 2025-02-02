@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
-import { Button, CardDescription, CardTitle } from "keep-react";
+import { Button, CardDescription, CardTitle, toast } from "keep-react";
 import { FaStar, FaRegHeart, FaDollarSign } from "react-icons/fa";
 import axios from "axios";
 import useAuth from "../Hook/useAuth";
 import Swal from "sweetalert2";
 import { RiGraduationCapLine } from "react-icons/ri";
+import { Helmet } from "react-helmet-async";
 
 const TutorDetails = () => {
   const { user } = useAuth();
@@ -16,7 +17,6 @@ const TutorDetails = () => {
     details;
 
   const handleBookNow = (tutor_id) => {
-    c
     const myBookedTutor = {
       tutor_id,
       tutor_email: email,
@@ -26,29 +26,37 @@ const TutorDetails = () => {
       price,
       image,
     };
-    
-    axios.post(`http://localhost:5000/mybooked`, myBookedTutor).then((data) => {
-      
-      if (data.data.insertedId) {
-        Swal.fire({
-          title: "Tutor has been booked",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate("/myBookedTutors");
-      }
-    });
+
+    axios
+      .post(`${import.meta.env.VITE_API_URL}/mybooked`, myBookedTutor, {
+        withCredentials: true,
+      })
+      .then((data) => {
+        if (data.data.insertedId) {
+          Swal.fire({
+            title: "Tutor has been booked",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/myBookedTutors");
+        }
+      })
+      .catch((error) => toast.error(error.response.data));
   };
 
   return (
     <div className="w-11/12 lg:w-5/6 mx-auto my-6 flex flex-col lg:flex-row gap-6">
+      <Helmet>
+        <title>Details | Tutor World</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <div className=" bg-white rounded-xl p-8 w-full">
         <div className="flex gap-6">
           <div className="w-48 h-40">
             <img className="w-full h-full rounded-lg border " src={image} />
           </div>
-          <div className="w-full space-y-2 flex justify-between">
+          <div className="w-full space-y-2 flex justify-between lg:pr-8">
             <div className="space-y-3">
               <CardTitle className="text-2xl lg:text-3xl font-semibold">
                 {name}
@@ -58,9 +66,11 @@ const TutorDetails = () => {
                   <RiGraduationCapLine className="text-metal-600"></RiGraduationCapLine>{" "}
                   Teaches
                 </span>
-                <span className="text-metal-600">{language} Language</span>
+                <span className="text-metal-600 ">{language} Language</span>
               </p>
-              <CardDescription>{description}</CardDescription>
+              <CardDescription className="text-justify">
+                {description}
+              </CardDescription>
             </div>
           </div>
         </div>

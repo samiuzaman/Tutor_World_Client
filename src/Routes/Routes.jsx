@@ -32,7 +32,7 @@ const routes = createBrowserRouter([
       {
         path: "/findTutors",
         element: <FindTutors></FindTutors>,
-        loader: () => fetch("http://localhost:5000/alltutorial"),
+        loader: () => fetch(`${import.meta.env.VITE_API_URL}/alltutorial`),
       },
       {
         path: "/tutorDetails/:id",
@@ -42,7 +42,7 @@ const routes = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/alltutorial/${params.id}`),
+          fetch(`${import.meta.env.VITE_API_URL}/alltutorial/${params.id}`),
       },
       {
         path: "/addTutorials",

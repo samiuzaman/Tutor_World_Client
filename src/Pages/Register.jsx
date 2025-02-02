@@ -74,7 +74,7 @@ const Register = () => {
   return (
     <div className="py-10 w-11/12 lg:w-5/6 mx-auto">
       <Helmet>
-        <title>Register | Career Climb</title>
+        <title>Register | Tutor World</title>
         <link rel="canonical" href="/register" />
       </Helmet>
       <div className="w-11/12 mx-auto space-y-5 dark:bg-metal-800 ">

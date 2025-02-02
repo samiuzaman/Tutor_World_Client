@@ -32,7 +32,10 @@ const ModalComponents = ({
     const formData = new FormData(event.target);
     const updatedData = Object.fromEntries(formData.entries());
     axios
-      .patch(`http://localhost:5000/alltutorial/${itme_id}`, updatedData)
+      .patch(
+        `${import.meta.env.VITE_API_URL}/alltutorial/${itme_id}`,
+        updatedData
+      )
       .then((data) => {
         if (data.data.modifiedCount > 0) {
           Swal.fire({

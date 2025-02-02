@@ -92,7 +92,7 @@ const Login = () => {
   return (
     <div className="py-10 w-11/12 lg:w-4/5 mx-auto">
       <Helmet>
-        <title>Login | Career Climb</title>
+        <title>Login | Tutor World</title>
         <link rel="canonical" href="/login" />
       </Helmet>
       <div className="w-11/12 mx-auto space-y-5 ">

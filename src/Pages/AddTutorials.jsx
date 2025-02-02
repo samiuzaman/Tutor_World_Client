@@ -15,6 +15,7 @@ import {
 } from "keep-react";
 import useAuth from "../Hook/useAuth";
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 
 const AddTutorials = () => {
   const { user } = useAuth();
@@ -23,11 +24,12 @@ const AddTutorials = () => {
     event.preventDefault();
     const formData = new FormData(event.target);
     const initialData = Object.fromEntries(formData.entries());
-   
+
     axios
-      .post("http://localhost:5000/alltutorial", initialData)
+      .post(`${import.meta.env.VITE_API_URL}/alltutorial`, initialData, {
+        withCredentials: true,
+      })
       .then((data) => {
-        
         if (data.data.acknowledged) {
           Swal.fire({
             position: "top-center",
@@ -42,6 +44,10 @@ const AddTutorials = () => {
 
   return (
     <div className="dark:bg-metal-800">
+      <Helmet>
+        <title>Add Tutorials | Tutor World</title>
+        <link rel="canonical" href="/" />
+      </Helmet>
       <div className="w-11/12 lg:w-4/5 mx-auto py-12">
         <form
           onSubmit={handleAddTutorial}

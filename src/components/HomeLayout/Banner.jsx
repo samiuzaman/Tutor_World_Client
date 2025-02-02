@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Banner = () => {
   useEffect(() => {
@@ -32,21 +33,23 @@ const Banner = () => {
           data-aos="fade-up"
           data-aos-duration="500"
           data-aos-delay="600"
-          className="text-metal-800 font-Noto italic"
+          className="text-metal-800 font-Noto italic pb-5"
         >
           Welcome to Tutor World, your ultimate platform for connecting with
           expert tutors across the globe. Whether you're looking to master a new
           language, excel in academics, or explore a skill, we've got the
           perfect tutor for you
         </p>
-        <Button
-          data-aos="fade-up"
-          data-aos-duration="500"
-          data-aos-delay="800"
-          color="success"
-        >
-          Check Our Tutors
-        </Button>
+        <Link to={`/findTutors`}>
+          <Button
+            data-aos="fade-up"
+            data-aos-duration="500"
+            data-aos-delay="800"
+            color="success"
+          >
+            Check Our Tutors
+          </Button>
+        </Link>
       </div>
       <div className="w-full lg:w-1/2 pt-8 z-10">
         <motion.img

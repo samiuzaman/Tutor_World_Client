@@ -47,7 +47,7 @@ const Forgot = () => {
   return (
     <div>
       <Helmet>
-        <title>Forget | Career Climb</title>
+        <title>Forget | Tutor World</title>
         <link rel="canonical" href="/login/forgot" />
       </Helmet>
 
