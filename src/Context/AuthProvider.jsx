@@ -72,23 +72,30 @@ const AuthProvider = ({ children }) => {
 
   // Login retention function
   useEffect(() => {
-    const unsubcribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubcribe = onAuthStateChanged(auth, async (currentUser) => {
       if (currentUser?.email) {
         setUser(currentUser);
         const user = { email: currentUser?.email };
-        axios
-          .post(`${import.meta.env.VITE_API_URL}/jwt`, user, {
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_API_URL}/jwt`,
+          user,
+          {
             withCredentials: true,
-          })
-          .then((res) => console.log(res.data));
+          }
+        );
+        console.log(data);
+
         setLoading(false);
       } else {
         setUser(currentUser);
-        axios.get(`${import.meta.env.VITE_API_URL}/logout`, {
-          withCredentials: true,
-        });
-        setLoading(false);
+
+        const { data } = await axios.get(
+          `${import.meta.env.VITE_API_URL}/logout`,
+          { withCredentials: true }
+        );
+        console.log(data);
       }
+      setLoading(false);
     });
 
     return () => {

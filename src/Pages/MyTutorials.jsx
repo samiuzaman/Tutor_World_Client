@@ -16,15 +16,15 @@ import { MdDeleteForever } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const MyTutorials = () => {
   const { user } = useAuth();
   const [myTutorials, setMyTutorials] = useState([]);
+  const axiosSecure = useAxiosSecure();
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/alltutorial?email=${user.email}`, {
-        withCredentials: true,
-      })
+    axiosSecure
+      .get(`/my-added-tutorial?email=${user.email}`)
       .then((data) => setMyTutorials(data.data));
   }, [setMyTutorials]);
 
@@ -38,23 +38,25 @@ const MyTutorials = () => {
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, delete it!",
     }).then((data) => {
-      axios
-        .delete(`${import.meta.env.VITE_API_URL}/alltutorial/${id}`, {
-          withCredentials: true,
-        })
-        .then((data) => {
-          if (data.data.deletedCount > 0) {
-            Swal.fire({
-              title: "Deleted!",
-              text: " Tutorial has been deleted.",
-              icon: "success",
-            });
-            const remainingData = myTutorials.filter(
-              (tutorial) => tutorial._id !== id
-            );
-            setMyTutorials(remainingData);
-          }
-        });
+      if (data.isConfirmed) {
+        axios
+          .delete(`${import.meta.env.VITE_API_URL}/alltutorial/${id}`, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            if (data.data.deletedCount > 0) {
+              Swal.fire({
+                title: "Deleted!",
+                text: " Tutorial has been deleted.",
+                icon: "success",
+              });
+              const remainingData = myTutorials.filter(
+                (tutorial) => tutorial._id !== id
+              );
+              setMyTutorials(remainingData);
+            }
+          });
+      }
     });
   };
 

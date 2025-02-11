@@ -42,8 +42,6 @@ const routes = createBrowserRouter([
             <TutorDetails></TutorDetails>
           </PrivetRoute>
         ),
-        loader: ({ params }) =>
-          fetch(`${import.meta.env.VITE_API_URL}/alltutorial/${params.id}`),
       },
       {
         path: "/addTutorials",

@@ -16,9 +16,11 @@ import {
 import useAuth from "../Hook/useAuth";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { useNavigate } from "react-router-dom";
 
 const AddTutorials = () => {
   const { user } = useAuth();
+  const navigate = useNavigate();
 
   const handleAddTutorial = (event) => {
     event.preventDefault();
@@ -38,6 +40,7 @@ const AddTutorials = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          navigate("/myTutorials");
         }
       });
   };

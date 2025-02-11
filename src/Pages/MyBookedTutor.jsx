@@ -1,23 +1,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
 import useAuth from "../Hook/useAuth";
-import { Button, CardDescription, CardTitle, Divider, toast } from "keep-react";
-import Swal from "sweetalert2";
+import { Button, CardTitle, Divider, toast } from "keep-react";
 import { Helmet } from "react-helmet-async";
+import useAxiosSecure from "../Hook/useAxiosSecure";
 
 const MyBookedTutor = () => {
   const { user } = useAuth();
   const [myBookedData, setMyBookedData] = useState([]);
+  const axiosSecure = useAxiosSecure();
   const promise = () =>
     new Promise((resolve) =>
       setTimeout(() => resolve({ name: "Keep React" }), 2000)
     );
   useEffect(() => {
-    axios
-      .get(`${import.meta.env.VITE_API_URL}/mybooked?email=${user.email}`, {
-        withCredentials: true,
-      })
+    axiosSecure
+      .get(`/mybooked?email=${user.email}`)
       .then((data) => setMyBookedData(data.data));
   }, []);
 
@@ -28,13 +26,6 @@ const MyBookedTutor = () => {
       })
       .then((data) => {
         if (data.data.modifiedCount > 0) {
-          // Swal.fire({
-          //   position: "top-center",
-          //   icon: "success",
-          //   title: "Thank you for the review",
-          //   showConfirmButton: false,
-          //   timer: 1500,
-          // });
           toast.promise(promise, {
             loading: "Loading...",
             success: () => {

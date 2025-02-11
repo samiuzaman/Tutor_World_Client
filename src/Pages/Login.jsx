@@ -26,7 +26,6 @@ import Lottie from "lottie-react";
 const Login = () => {
   const {
     setUser,
-    setErrorMessage,
     errorMessage,
     handleSigninGoogle,
     handleSigninTwitter,
@@ -45,7 +44,7 @@ const Login = () => {
         toast.success(`Login Successful`);
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => setErrorMessage(error.message));
+      .catch((error) => toast.error(error.message));
   };
 
   // Handle Twitter Login Functionality
@@ -56,7 +55,7 @@ const Login = () => {
         toast.success(`Login Successful`);
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => setErrorMessage(error));
+      .catch((error) => toast.error(error));
   };
 
   // Handle Login Form
@@ -64,13 +63,11 @@ const Login = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
-    setErrorMessage(null);
+    toast.error(null);
     // Check password validation
     const CheckPassword = /^(?=.*[a-z])(?=.*[A-Z])[A-Za-z\d@$!%*?&]{6,}$/;
     if (!CheckPassword.test(password)) {
-      return setErrorMessage(
-        "Must be used one capital, and one lowercase letter"
-      );
+      return toast.error("Must be used one capital, and one lowercase letter");
     }
 
     // Sign in with emaill & password
@@ -80,7 +77,7 @@ const Login = () => {
         toast.success(`Login Successful`);
         navigate(location?.state ? location.state : "/");
       })
-      .catch((error) => setErrorMessage(error.message.slice(22, 42)));
+      .catch((error) => toast.error(error.message.slice(22, 42)));
   };
 
   const handleForgotPassword = (event) => {
@@ -102,7 +99,7 @@ const Login = () => {
               <AlertIcon />
               <p>{errorMessage}</p>
             </div>
-            <AlertDismiss onClick={() => setErrorMessage(null)} />
+            <AlertDismiss onClick={() => toast.error(null)} />
           </Alert>
         )}
       </div>

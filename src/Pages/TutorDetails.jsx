@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { Button, CardDescription, CardTitle, toast } from "keep-react";
 import { FaStar, FaRegHeart, FaDollarSign } from "react-icons/fa";
@@ -10,11 +10,16 @@ import { Helmet } from "react-helmet-async";
 
 const TutorDetails = () => {
   const { user } = useAuth();
-  const loadedDetails = useLoaderData();
+  const { id } = useParams();
   const navigate = useNavigate();
-  const [details, setDetails] = useState(loadedDetails);
+  const [details, setDetails] = useState([]);
   const { _id, name, email, language, price, review, description, image } =
     details;
+  useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_API_URL}/alltutorial/${id}`)
+      .then((res) => setDetails(res.data));
+  }, [setDetails]);
 
   const handleBookNow = (tutor_id) => {
     const myBookedTutor = {
